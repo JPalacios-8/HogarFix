@@ -5,6 +5,7 @@ const arrowRight = document.querySelector('.arrow.right');
 
 let index = 0;
 
+// Funciones para navegación
 function updateCarousel() {
   carousel.style.transform = `translateX(-${index * 100}%)`;
 }
@@ -19,7 +20,7 @@ arrowRight.addEventListener('click', () => {
   updateCarousel();
 });
 
-// Swipe para móviles
+// Swipe en móviles
 let startX = 0;
 
 carousel.addEventListener('touchstart', e => {
