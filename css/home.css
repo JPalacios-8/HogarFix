@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f5f5f5;
+}
+
+.header, .footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+}
+
+.logo-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #555;
+  padding: 5px 10px;
+}
+
+.logo {
+  width: 40px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  background: #e7b853;
+  padding: 5px;
+}
+
+.search-bar input {
+  width: 70%;
+  padding: 5px;
+  border: none;
+  border-radius: 3px;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  height: 500px;
+  background: #fff;
+}
+
+.carousel {
+  display: flex;
+  transition: transform 0.3s ease-in-out;
+  width: 400%; /* 4 tarjetas */
+}
+
+.card {
+  min-width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.card img {
+  width: 80%;
+  border-radius: 10px;
+}
+
+.card button {
+  margin-top: 15px;
+  background-color: #e7b853;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.3);
+  border: none;
+  color: white;
+  font-size: 30px;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow.left {
+  left: 0;
+}
+
+.arrow.right {
+  right: 0;
+}
+
+.footer {
+  font-weight: bold;
+  padding: 10px;
+}
+/* Estilo para pantallas más grandes (tablets en adelante) */
+@media (min-width: 600px) {
+  .card {
+    min-width: 50%;
+  }
+
+  .carousel {
+    width: calc(50% * 4); /* 4 tarjetas al 50% */
+  }
+}
+
+/* Estilo para pantallas grandes (desktop) */
+@media (min-width: 1024px) {
+  .card {
+    min-width: 25%;
+  }
+
+  .carousel {
+    width: calc(25% * 4); /* 4 tarjetas al 25% */
+  }
+
+  .carousel-container {
+    height: 450px;
+  }
+
+  .card img {
+    width: 70%;
+  }
+}
