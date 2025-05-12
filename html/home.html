@@ -1,58 +1,55 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home Usuario - HogarFix</title>
-  <link rel="stylesheet" href="../css/home.css">
+  <link rel="stylesheet" href="../css/home.css" />
 </head>
-
-<!-- Header -->
 <body>
-<header class="header">
-  <div class="logo-bar">
-    <img src="../imagenes/logoGrisAmarillo.jpg" alt="Logo" class="logo" />
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="HogarFix Logo" />
+    </div>
     <div class="icons">
-      <img src="icono-usuario.svg" alt="Usuario" />
-      <img src="icono-notificaciones.svg" alt="Notificaciones" />
+      <a href="notificaciones.html"><img src="icono-notificacion.png" alt="Notificaciones" /></a>
+      <a href="perfil.html"><img src="icono-perfil.png" alt="Perfil" /></a>
     </div>
-  </div>
-  <div class="search-bar">
-    <input type="text" placeholder="Buscar servicio" />
-    <button><img src="buscar.svg" alt="Buscar" /></button>
-  </div>
-</header>
+  </header>
 
-<!-- Carrusel -->
-<div class="carousel-container">
-  <button class="arrow left">&#10094;</button>
-  <div class="carousel" id="carousel">
-    <div class="card">
-      <img src="../imagenes/jardineria.jpg" alt="Jardinería" />
-      <h3>JARDINERÍA</h3>
-      <button>ESCOGER SERVICIO</button>
+  <main>
+    <div class="carousel-container">
+      <button class="arrow left">&#10094;</button>
+      <div class="carousel" id="carousel">
+        <div class="card">
+          <img src="../imagenes/jardineria.jpg" alt="Jardinería" />
+          <h3>JARDINERÍA</h3>
+          <a href="solicituddeservicio.html" class="btn">ESCOGER SERVICIO</a>
+        </div>
+        <div class="card">
+          <img src="../imagenes/fontaneria.jpg" alt="Fontanería" />
+          <h3>FONTANERÍA</h3>
+          <a href="solicituddeservicio.html" class="btn">ESCOGER SERVICIO</a>
+        </div>
+        <div class="card">
+          <img src="../imagenes/electricista.jpg" alt="Electricista" />
+          <h3>ELECTRICISTA</h3>
+          <a href="solicituddeservicio.html" class="btn">ESCOGER SERVICIO</a>
+        </div>
+        <div class="card">
+          <img src="../imagenes/aseo.jpg" alt="Aseo general" />
+          <h3>ASEO GENERAL</h3>
+          <a href="solicituddeservicio.html" class="btn">ESCOGER SERVICIO</a>
+        </div>
+      </div>
+      <button class="arrow right">&#10095;</button>
     </div>
-    <div class="card">
-      <img src="fontaneria.jpg" alt="Fontanería" />
-      <h3>FONTANERÍA</h3>
-      <button>ESCOGER SERVICIO</button>
-    </div>
-    <div class="card">
-      <img src="electricista.jpg" alt="Electricista" />
-      <h3>ELECTRICISTA</h3>
-      <button>ESCOGER SERVICIO</button>
-    </div>
-    <div class="card">
-      <img src="aseo.jpg" alt="Aseo general" />
-      <h3>ASEO GENERAL</h3>
-      <button>ESCOGER SERVICIO</button>
-    </div>
-  </div>
-  <button class="arrow right">&#10095;</button>
-</div>
+  </main>
 
-<!-- Footer -->
-<footer class="footer">HOGARFIX</footer>
+  <footer>
+    <span>HOGARFIX</span>
+  </footer>
 
-<script src="../javascript/home.js"></script>
-
+  <script src="../javascript/home.js"></script>
 </body>
+</html>
