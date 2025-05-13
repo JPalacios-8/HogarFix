@@ -1,23 +1,25 @@
-<!-- miPerfil.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mi Perfil</title>
-  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body class="pagina-inicio">
   <button class="btn-volverfa" onclick="window.location.href='perfil.html'">&#8592;</button>
 
   <div class="logo-bar">
-    <img src="../imagenes/logoGrisAmarillo.jpg" alt="Logo" class="logo-superior" />
+    <img src="../imagenes/logoSinLetras.jpg" alt="Logo" class="logo-superior" />
     <button class="btn-singup">MI PERFIL</button>
   </div>
 
-  <div style="background: #D9D9D9; padding: 1rem; border-radius: 1rem; width: 90%; margin: auto;">
-    <div style="text-align: center;">
-      <div style="background-color: #eabf60; border-radius: 50%; width: 80px; height: 80px; margin: auto;"></div>
-      <p>EDITAR</p>
+  <div class="contenedor-perfil">
+    <div class="perfil-img-wrapper">
+      <img src="../imagenes/perfil-imagen.png" alt="Perfil" id="img-preview" class="perfil-img"/>
+      <label for="input-foto" class="editar-texto">EDITAR</label>
+      <input type="file" id="input-foto" accept="image/*" style="display: none;" />
+      <button id="btn-eliminar" class="btn-eliminar">Eliminar Foto</button>
     </div>
 
     <button class="btn-proveedor">NOMBRE</button>
@@ -25,6 +27,10 @@
     <button class="btn-proveedor">TELÉFONO</button>
   </div>
 
-  <footer class="footer">HOGARFIX</footer>
+<div class="franja-inferior">
+  HOGARFIX
+</div>
+
+  <script src="../js/perfil.js"></script>
 </body>
 </html>
