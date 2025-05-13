@@ -329,4 +329,89 @@
   bottom: 0;
   left: 0;
 }
- 
+/* perfil*/ 
+/* PERFIL */
+.contenedor-perfil {
+  background: #D9D9D9;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perfil-img-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.perfil-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #eabf60;
+  background-color: white;
+}
+
+/* Texto debajo de la imagen */
+.editar-texto {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Botón para eliminar la foto */
+.btn-eliminar {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+/* Botones reutilizables */
+.btn-proveedor {
+  background-color: #eabf60;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  padding: 0.6rem 1.5rem;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0.4rem 0;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 400px) {
+  .perfil-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .contenedor-perfil {
+    padding: 1.5rem 1rem;
+  }
+
+  .btn-proveedor {
+    font-size: 13px;
+    padding: 0.5rem 1rem;
+  }
+}
+
+
