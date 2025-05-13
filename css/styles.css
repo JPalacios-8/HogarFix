@@ -166,6 +166,39 @@
     padding: 2rem;
     
   }
+  
+  
+select#especialidad {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 1rem 0;
+  background-color: #494949;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  appearance: none; 
+}
+
+textarea::placeholder {
+  color: #ffffff; 
+  opacity: 0.8;
+}
+
+
+
+textarea#descripcion {
+  width: 100%;
+  padding: 1rem;
+  background-color: #494949;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  resize: vertical;
+  font-size: 16px;
+  margin-top: 1rem;
+}
+
   /*Singin*/
   .pagina-singin {
     position: relative;
