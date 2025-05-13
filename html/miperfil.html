@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Perfil</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body class="pagina-inicio">
+  <button class="btn-volverfa" onclick="window.location.href='perfil.html'">&#8592;</button>
+
+  <div class="logo-bar">
+    <img src="../imagenes/logoSinLetras.jpg" alt="Logo" class="logo-superior" />
+    <button class="btn-singup">MI PERFIL</button>
+  </div>
+
+  <div class="contenedor-perfil">
+    <div class="perfil-img-wrapper">
+      <img src="../imagenes/perfil-imagen.png" alt="Perfil" id="img-preview" class="perfil-img"/>
+      <label for="input-foto" class="editar-texto">EDITAR</label>
+      <input type="file" id="input-foto" accept="image/*" style="display: none;" />
+      <button id="btn-eliminar" class="btn-eliminar">Eliminar Foto</button>
+    </div>
+
+    <button class="btn-proveedor">NOMBRE</button>
+    <button class="btn-proveedor">UBICACIÓN</button>
+    <button class="btn-proveedor">TELÉFONO</button>
+  </div>
+
+<div class="franja-inferior">
+  HOGARFIX
+</div>
+
+  <script src="../js/perfil.js"></script>
+</body>
+</html>
