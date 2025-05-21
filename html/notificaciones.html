@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notificaciones - Hogareix</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      background-color: #4c4c4c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background-color: #e0e0e0;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 25px;
+      padding: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .back-button-wrapper {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background-color: #f2c94c;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      z-index: 2;
+    }
+
+    .back-button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .icon-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 2.5rem;
+    }
+
+    .icon-container img {
+      width: 80px;
+    }
+
+    .title {
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+
+    .title button {
+      background-color: #4c4c4c;
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .notifications {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .notification {
+      background-color: #666;
+      color: white;
+      border-radius: 25px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .notification.read {
+      opacity: 0.6;
+    }
+
+    .notification-icon {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex: 1;
+    }
+
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .status-dot.unread {
+      background-color: #4be04b;
+    }
+
+    .status-dot.read {
+      background-color: #bbb;
+    }
+
+    .detalle-servicio {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .detalle-servicio .modal {
+      background-color: #666;
+      color: white;
+      border-radius: 25px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      width: 85%;
+      max-width: 350px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Sombra agregada */
+    }
+
+    .detalle-servicio .modal p {
+      margin-bottom: 1rem;
+    }
+
+    .detalle-servicio .modal button {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .perfil-btn, .agendar-btn {
+      background-color: #f2c94c;
+      color: #333;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      color: rgb(159, 0, 0);
+      cursor: pointer;
+    }
+
+    .footer {
+      margin-top: 2rem;
+      text-align: center;
+      color: rgb(195, 156, 3);
+      
+      font-weight: bold;
+      letter-spacing: 4px;
+      text-shadow: 1px 1px 2px #392600;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="back-button-wrapper">
+      <button class="back-button" onclick="window.history.back()">←</button>
+    </div>
+
+    <div class="icon-container">
+      <img src="https://cdn-icons-png.flaticon.com/512/1827/1827370.png" alt="icono campana notificaciones">
+    </div>
+
+    <div class="title">
+      <button>NOTIFICACIONES</button>
+    </div>
+
+    <div class="notifications">
+      <div class="notification">
+        <div class="notification-icon">
+          <span>🔒</span>
+          <span>TIENES UN SERVICIO PROGRAMADO PARA MAÑANA, ¡NO LO OLVIDES!</span>
+        </div>
+        <div class="status-dot unread"></div>
+      </div>
+
+      <div class="notification" onclick="mostrarDetalle()">
+        <div class="notification-icon">
+          <span>🔒</span>
+          <span>SOLICITUD ACEPTADA DE PEDRO. SERVICIO: FONTANERÍA</span>
+        </div>
+        <div class="status-dot unread"></div>
+      </div>
+
+      <div class="notification read">
+        <div class="notification-icon">
+          <span>🔒</span>
+          <span>NO OLVIDES CALIFICAR EL SERVICIO DE PEDRO</span>
+        </div>
+        <div class="status-dot read"></div>
+      </div>
+
+      <div class="notification read">
+        <div class="notification-icon">
+          <span>🔒</span>
+          <span>TU SERVICIO FUE FINALIZADO</span>
+        </div>
+        <div class="status-dot read"></div>
+      </div>
+
+      <div class="notification read">
+        <div class="notification-icon">
+          <span>🔒</span>
+          <span>PEDRO ESTÁ EN TU DIRECCIÓN</span>
+        </div>
+        <div class="status-dot read"></div>
+      </div>
+    </div>
+
+    <div class="footer">
+      HOGARFIX
+    </div>
+  </div>
+
+  <div class="detalle-servicio" id="detalleServicio" onclick="cerrarModal(event)">
+    <div class="modal">
+      <button class="close-btn" onclick="cerrarDetalle()">✖</button>
+      <p>SOLICITUD ACEPTADA DE: <strong>PEDRO GÓMEZ</strong><br>SERVICIO: <strong>FONTANERÍA</strong></p>
+      <button class="perfil-btn" onclick="verPerfil()">Ver perfil de proveedor</button>
+      <button class="agendar-btn" onclick="agendarServicio()">Agendar servicio</button>
+    </div>
+  </div>
+
+  <script>
+    function mostrarDetalle() {
+      document.getElementById("detalleServicio").style.display = "flex";
+    }
+
+    function cerrarDetalle() {
+      document.getElementById("detalleServicio").style.display = "none";
+    }
+
+    function cerrarModal(e) {
+      if (e.target.id === "detalleServicio") {
+        cerrarDetalle();
+      }
+    }
+
+    function verPerfil() {
+      window.location.href = "perfil-proveedor.html";
+    }
+
+    function agendarServicio() {
+      window.location.href = "chat-negociacion.html";
+    }
+  </script>
+</body>
+</html>
