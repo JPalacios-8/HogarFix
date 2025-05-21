@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>informacion de proveedor </title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body class = "pagina-singup_proveedor">
+    <button class="btn-volver" onclick="window.location.href='singup_proveedor'">←</button>
+    <img src="https://i.imgur.com/D6wiKa4.jpeg" alt="logo" class="logo-superior">
+  <div class="singin-container">
+    <h2>INFORMACIÓN PROVEEDOR</h2>
+    <form onsubmit="guardarInformacion(event)">
+      <label for="especialidad" style="color: white;">Selecciona tu especialidad:</label>
+      <select  id="especialidad" required>
+        <option value="">-- Elige una opción --</option>
+        <option value="Jardinería">Jardinería</option>
+        <option value="Fontanería">Fontanería</option>
+        <option value="Electricista">Electricista</option>
+        <option value="Aseo general">Aseo general</option>
+      </select>
+
+      <br><br>
+
+      <label for="descripcion" style="color: white;">Descripción del trabajo y capacidades:</label>
+      <textarea id="descripcion" rows="5" placeholder="Ej: Tengo 5 años de experiencia en..." required></textarea>
+
+      <br>
+      
+      <button type="submit" class="btn-registrar" >REGISTRAR</button>
+    </form>
+    <p id="mensaje-exito" style="color: rgb(248, 248, 248); text-align: center; margin-top: 1rem;"></p>
+  </div>
+  <script src="../javascript/informacion_proveedor.js"></script>
+</body>
+</html>
