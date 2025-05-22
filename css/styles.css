@@ -1,0 +1,452 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+  }
+  .logo-superior {
+    width: auto;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    
+  }
+  /*inicio*/
+  .pagina-inicio {
+    position: relative;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: flex-start;
+    background: #5a5c57;
+    min-height: 100vh;
+    padding: 4rem 2rem 2rem 2rem; 
+  }
+  .btn-singin {
+    width: auto !important;                 
+    background-color: #eabf60 !important; 
+    color: #ffffff !important;               
+    border-radius: 30px !important;
+    padding: 0.6rem 1.2rem !important;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 1rem auto 0 auto;                
+  }
+  
+  .btn-singin:hover {
+    background-color: #615e5e !important;
+  }
+
+  
+  .btn-singup {
+    width: auto !important;                 
+    background-color: #eabf60 !important; 
+    color: #ffffff !important;               
+    border-radius: 30px !important;
+    padding: 0.6rem 1.2rem !important;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 1rem auto 0 auto;                
+  }
+  
+  .btn-singup:hover {
+    background-color: #b1b0af !important;
+  }
+  
+  .texto-medio {
+    text-align: center;
+    color: #ffffff;
+    font-size: 18px;
+    margin: 10px 0 10px 0;
+  }
+  
+  /*Singup*/
+
+  .texto-superior {
+    text-align: center;
+    color: #ffffff;
+    font-size: 18px;
+    margin: 1rem 0;
+  }
+  .pagina-singup {
+    position: relative;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: flex-start;
+    background: #5a5c57;
+    min-height: 100vh;
+    padding: 4rem 2rem 2rem 2rem; 
+  }
+
+  .btn-usuario {
+    width: auto !important;                 
+    background-color: #eabf60 !important; 
+    color: #ffffff !important;               
+    border-radius: 30px !important;
+    padding: 0.6rem 2rem !important;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 1rem auto 0 auto;                
+  }
+
+  .btn-usuario:hover {
+    background-color: #272822 !important;
+  }
+
+  .btn-proveedor {
+    width: auto !important;                 
+    background-color: #eabf60 !important; 
+    color: #ffffff !important;               
+    border-radius: 30px !important;
+    padding: 0.6rem 1.2rem !important;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 1rem auto 0 auto;                
+  }
+
+  .btn-proveedor:hover {
+    background-color: #272822 !important;
+  }
+
+  .btn-volverfa {
+    position: fixed;  
+            
+    top: 20px;                   
+    left: 20px;                  
+    background-color: #eabf60;  
+    color: white;                
+    border: none;
+    border-radius: 50%;          
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    z-index: 1000;                 
+  }
+  
+  .btn-volverfa:hover {
+    background-color: #272822;
+  }
+  /* singup usuario*/
+
+  .pagina-singup_usuario {
+    position: relative;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center;
+    background: #5A5C57;
+    min-height: 100vh;
+    padding: 2rem;
+    
+  }
+/* singup proveedor*/
+
+  .pagina-singup_proveedor {
+    position: relative;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center;
+    background: #5A5C57;
+    min-height: 100vh;
+    padding: 2rem;
+    
+  }
+  
+  
+select#especialidad {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 1rem 0;
+  background-color: #494949;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  appearance: none; 
+}
+
+textarea::placeholder {
+  color: #ffffff; 
+  opacity: 0.8;
+}
+
+
+
+textarea#descripcion {
+  width: 100%;
+  padding: 1rem;
+  background-color: #494949;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  resize: vertical;
+  font-size: 16px;
+  margin-top: 1rem;
+}
+
+  /*Singin*/
+  .pagina-singin {
+    position: relative;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;    
+    justify-content: center;
+    background: #5A5C57;
+    min-height: 100vh;
+    padding: 2rem;
+    
+  }
+  
+  .singin-container {
+    background: #EABF60;
+    padding: 2rem;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    width: 100%;
+    max-width: 400px;
+  }
+  .singin-container h2 {
+    color: #ffffff;           
+    font-size: 24px;      
+    font-weight: bold;     
+    margin-bottom: 1rem;   
+    text-align: center;   
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"]{
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 2px solid #000000;
+    border-radius: 5px;
+  }
+  ::placeholder {
+    color: #ffffff; 
+    opacity: 1;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+  background-color: #EABF60; 
+  color: #ffffff; 
+  border: none; 
+  }
+  
+  button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #4F4F4F;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .btn-olvido {
+    width: auto !important;                 
+    background-color: transparent !important; 
+    color: #ffffff !important;               
+    border-radius: 8px !important;
+    padding: 0.6rem 1.2rem !important;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+    margin: 1rem auto 0 auto;                
+  }
+  
+  .btn-olvido:hover {
+    background-color: #EABF60 !important;
+  }
+  .btn-volver {
+    position: fixed;          
+    top: 20px;                   
+    left: 20px;                  
+    background-color: #EABF60;  
+    color: white;                
+    border: none;
+    border-radius: 50%;          
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    z-index: 1000;                 
+  }
+  
+  .btn-volver:hover {
+    background-color: #c89b44;
+  }
+    
+  button:hover {
+    background-color: #0e0e0e;
+  }
+  
+  
+  @media (max-width: 400px) {
+    .singin-container {
+      padding: 1rem;
+    }
+  
+    input, button {
+      padding: 0.7rem;
+    }
+  }
+  /* Botones pantalla soprote, mi perfil, historial */
+.contenedor-botones-soporte {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* espacio entre botones */
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.btn-inicio-botonesperfil {
+  background-color: #eabf60;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  padding: 0.6rem 1.8rem;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 250px;
+  text-align: center;
+
+}
+
+.btn-inicio:hover {
+  background-color: #bda255;
+}
+
+
+/* Franja inferior con texto HOGARFIX */
+.franja-inferior {
+  background-color: #eabf60;
+  color: black;
+  text-align: center;
+  padding: 1rem;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+/* PERFIL */
+.contenedor-perfil {
+  background: #D9D9D9;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.perfil-img-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.perfil-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #eabf60;
+  background-color: white;
+}
+
+/* Texto debajo de la imagen */
+.editar-texto {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* Botón para eliminar la foto */
+.btn-eliminar {
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 0.8rem;
+  text-decoration: underline;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+/* Botones reutilizables */
+.btn-proveedor {
+  background-color: #eabf60;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+  padding: 0.6rem 1.5rem;
+  font-size: 14px;
+  cursor: pointer;
+  margin: 0.4rem 0;
+  width: 100%;
+  max-width: 200px;
+  text-align: center;
+}
+
+/* Adaptación a pantallas pequeñas */
+@media (max-width: 400px) {
+  .perfil-img {
+    width: 80px;
+    height: 80px;
+  }
+
+  .contenedor-perfil {
+    padding: 1.5rem 1rem;
+  }
+
+  .btn-proveedor {
+    font-size: 13px;
+    padding: 0.5rem 1rem;
+  }
+}
+
+
