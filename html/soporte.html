@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soporte HogarFix</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #444;
+    }
+
+    .header {
+      background-color: #5a5c57;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+    }
+
+    .header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .header-icon {
+      background-color: #f2c94c;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .header-title {
+      color: #f2c94c;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .main {
+      max-width: 400px;
+      margin: 20px auto 20px auto;
+      background-color: #eee;
+      padding: 20px 15px;
+      border-radius: 20px;
+    }
+    .contenedor-central {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 85vh;
+    }
+
+
+    .seccion-servicio {
+      background-color: #d6d6d6;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .seccion-servicio h3 {
+      margin-top: 0;
+    }
+
+    .servicio-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    }
+    .servicio-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    margin-right: 10px;
+    object-fit: cover;
+    }
+
+
+    .servicio-info .textos {
+      flex: 1;
+    }
+
+    .precio {
+      background-color: #f2c94c;
+      color: white;
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 4px 12px;
+      display: inline-block;
+      margin-top: 5px;
+    }
+
+    .seccion-ayuda {
+      background-color: #ccc;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .seccion-ayuda h4 {
+      margin-top: 0;
+    }
+
+    .seccion-ayuda button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      background-color: #f2c94c;
+      color: black;
+      border: none;
+      padding: 10px;
+      font-weight: bold;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 80%;
+      text-align: center;
+    }
+
+    .modal-content p {
+      margin-bottom: 15px;
+    }
+
+    .modal-content button {
+      background-color: #f2c94c;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding-bottom: 10px;
+      color: #f2c94c;
+      font-weight: bold;
+      letter-spacing: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="logo">
+      <div class="header-icon" onclick="window.history.back()">←</div>
+      <div class="header-title">SOPORTE HOGARFIX</div>
+    </div>
+  </div>
+
+  <div class="contenedor-central">
+  <main class="main">
+    <div class="seccion-servicio">
+  <h3>¿Ayuda con tu último servicio? <span style="float:left; font-size: 12px;">22/05/2025</span></h3>
+  <div class="servicio-info">
+    <img src="../imagenes/aseo.jpg" alt="Servicio Aseo">
+    <div class="textos">
+      <strong>ASEO GENERAL</strong><br>
+      Servicio realizado por Ana Jiménez<br>
+      <span class="precio">$90,000 COP</span>
+    </div>
+  </div>
+</div>
+
+    <div class="seccion-ayuda">
+      <h4>Otras ayudas</h4>
+      <button onclick="mostrarModal('servicio')">Ayuda con un servicio</button>
+      <button onclick="mostrarModal('proveedor')">Reportar un proveedor</button>
+      <button onclick="mostrarModal('app')">Reportar problemas con la app</button>
+      <button onclick="window.location.href='miperfil.html'">Cuenta</button>
+    </div>
+</div>
+</main>
+
+  <footer>HOGARFIX</footer>
+
+  <!-- Modales -->
+  <div class="modal" id="modalAyuda">
+    <div class="modal-content" id="modalContenido">
+      <p></p>
+      <button onclick="cerrarModal()">Cerrar</button>
+    </div>
+  </div>
+
+  <script>
+    // Mostrar modal con mensaje según tipo
+    function mostrarModal(tipo) {
+      const mensaje = {
+        servicio: "Escribe detalladamente con qué servicio necesitas ayuda y nuestro equipo de HOGARFIX se contactará contigo lo antes posible.",
+        proveedor: "Describe el problema e incluye el nombre del proveedor para que podamos tomar medidas.",
+        app: "Cuéntanos qué fallos encontraste o qué experiencia tuviste para poder mejorar la app."
+      };
+
+      document.querySelector("#modalContenido p").textContent = mensaje[tipo];
+      document.getElementById("modalAyuda").style.display = "flex";
+    }
+
+    function cerrarModal() {
+      document.getElementById("modalAyuda").style.display = "none";
+    }
+
+    // Cargar datos desde localStorage
+    const datos = JSON.parse(localStorage.getItem("datosServicio")) || {};
+    const precio = localStorage.getItem("precioNegociado") || "50000";
+
+    document.getElementById("tipo-servicio").textContent = datos.servicio || "SIN ESPECIFICAR";
+    document.getElementById("fecha-servicio").textContent = datos.fecha || "";
+    document.getElementById("precio-servicio").textContent = `$${Number(precio).toLocaleString()} COP`;
+  </script>
+</body>
+</html>
