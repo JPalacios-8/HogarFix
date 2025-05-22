@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Servicio Agendado</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #444;
+      color: #333;
+    }
+
+    .contenedor {
+      max-width: 400px;
+      margin: auto;
+      background-color: #eee;
+      border-radius: 20px;
+      padding: 20px;
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .check {
+      font-size: 30px;
+      color: green;
+      margin-bottom: 10px;
+    }
+
+    .dato {
+      text-align: left;
+      margin: 10px 0;
+      font-size: 15px;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .descargar {
+      margin-top: 20px;
+    }
+
+    .btn {
+      margin-top: 20px;
+      background-color: #f2c94c;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      color: #f2c94c;
+      margin-top: 30px;
+      letter-spacing: 4px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <div class="check">✔</div>
+    <h2>SERVICIO AGENDADO</h2>
+
+    <div class="dato"><span class="bold">NOMBRE:</span> Pedro Gómez</div>
+    <div class="dato"><span class="bold">DIRECCIÓN:</span> <span id="direccion"></span></div>
+    <div class="dato"><span class="bold">FECHA:</span> <span id="fecha"></span></div>
+    <div class="dato"><span class="bold">HORA:</span> <span id="hora"></span></div>
+    <div class="dato"><span class="bold">TIPO DE SERVICIO:</span> <span id="tipo"></span></div>
+    <div class="dato"><span class="bold">DESCRIPCIÓN DEL TRABAJO:</span> <span id="descripcion"></span></div>
+    <div class="dato"><span class="bold">NRO. DE CONTRATO:</span> #<span id="contrato"></span></div>
+    <div class="dato"><span class="bold">ESTADO DE PAGO:</span> <span id="pago"></span></div>
+
+    <div class="descargar">
+      <img src="https://cdn-icons-png.flaticon.com/512/724/724933.png" alt="Descargar" width="30">
+    </div>
+
+    <button class="btn" onclick="window.location.href='home.html'">VOLVER AL COMERCIO</button>
+  </div>
+
+  <footer>HOGARFIX</footer>
+
+  <script>
+    // Simular datos del formulario guardados en localStorage
+    const datos = JSON.parse(localStorage.getItem("datosServicio")) || {};
+
+    document.getElementById("direccion").textContent = datos.direccion || "No definida";
+    document.getElementById("fecha").textContent = datos.fecha || "No definida";
+    document.getElementById("hora").textContent = datos.hora || "No definida";
+    document.getElementById("tipo").textContent = datos.servicio || "No definido";
+    document.getElementById("descripcion").textContent = datos.descripcion || "No definida";
+
+    // Nro. de contrato aleatorio
+    document.getElementById("contrato").textContent = Math.floor(Math.random() * 90000 + 10000);
+
+    // Estado de pago basado en negociación
+    const precioFinal = localStorage.getItem("precioNegociado") || "50.000";
+    document.getElementById("pago").textContent = "$" + precioFinal;
+  </script>
+</body>
+</html>
