@@ -50,6 +50,13 @@
       padding: 20px 15px;
       border-radius: 20px;
     }
+    .contenedor-central {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 85vh;
+    }
+
 
     .seccion-servicio {
       background-color: #d6d6d6;
@@ -63,18 +70,18 @@
     }
 
     .servicio-info {
-      display: flex;
-      align-items: center;
-      margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    }
+    .servicio-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    margin-right: 10px;
+    object-fit: cover;
     }
 
-    .servicio-info img {
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
-      margin-right: 10px;
-      object-fit: cover;
-    }
 
     .servicio-info .textos {
       flex: 1;
@@ -165,18 +172,19 @@
     </div>
   </div>
 
+  <div class="contenedor-central">
   <main class="main">
     <div class="seccion-servicio">
-      <h3>¿Ayuda con tu último servicio? <span id="fecha-servicio" style="float:right; font-size: 12px;"></span></h3>
-      <div class="servicio-info">
-        <img src="../imagenes/electricista.jpg" alt="Servicio">
-        <div class="textos">
-          <strong id="tipo-servicio">ELECTRICISTA</strong><br>
-          Servicio realizado por Pedro Gómez<br>
-          <span class="precio" id="precio-servicio">$25.000 COP</span>
-        </div>
-      </div>
+  <h3>¿Ayuda con tu último servicio? <span style="float:left; font-size: 12px;">22/05/2025</span></h3>
+  <div class="servicio-info">
+    <img src="../imagenes/aseo.jpg" alt="Servicio Aseo">
+    <div class="textos">
+      <strong>ASEO GENERAL</strong><br>
+      Servicio realizado por Ana Jiménez<br>
+      <span class="precio">$90,000 COP</span>
     </div>
+  </div>
+</div>
 
     <div class="seccion-ayuda">
       <h4>Otras ayudas</h4>
@@ -185,7 +193,8 @@
       <button onclick="mostrarModal('app')">Reportar problemas con la app</button>
       <button onclick="window.location.href='miperfil.html'">Cuenta</button>
     </div>
-  </main>
+</div>
+</main>
 
   <footer>HOGARFIX</footer>
 
