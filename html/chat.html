@@ -305,6 +305,7 @@
       const valor = document.getElementById('nuevoValor').value;
       if (valor) {
         enviarMensaje(`Propongo un nuevo valor: $${valor}`);
+        localStorage.setItem("precioNegociado", valor);
         document.getElementById('ofertaModal').style.display = 'none';
         document.getElementById('nuevoValor').value = '';
       }
