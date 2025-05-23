@@ -198,13 +198,15 @@
 
   <footer>HOGARFIX</footer>
 
-  <!-- Modales -->
-  <div class="modal" id="modalAyuda">
-    <div class="modal-content" id="modalContenido">
-      <p></p>
-      <button onclick="cerrarModal()">Cerrar</button>
-    </div>
+<div class="modal" id="modalAyuda">
+  <div class="modal-content" id="modalContenido">
+    <p id="mensaje-modal"></p>
+    <textarea id="input-modal" placeholder="Escribe tu mensaje aquí..." rows="4" style="width: 90%; margin: 10px auto; display: block; border-radius: 10px; padding: 10px;"></textarea>
+    <button onclick="enviarModal()" style="background-color:#f2c94c; margin-top: 10px; border-radius: 15px; padding: 10px 20px; font-weight: bold; cursor: pointer;">Enviar</button>
+    <button onclick="cerrarModal()" style="margin-top: 10px; background-color: #ccc; border: none; border-radius: 15px; padding: 8px 18px; font-weight: bold; cursor: pointer;">Cerrar</button>
   </div>
+</div>
+
 
   <script>
     // Mostrar modal con mensaje según tipo
@@ -214,14 +216,30 @@
         proveedor: "Describe el problema e incluye el nombre del proveedor para que podamos tomar medidas.",
         app: "Cuéntanos qué fallos encontraste o qué experiencia tuviste para poder mejorar la app."
       };
-
+      
       document.querySelector("#modalContenido p").textContent = mensaje[tipo];
+      document.getElementById("input-modal").value = "";
       document.getElementById("modalAyuda").style.display = "flex";
     }
 
     function cerrarModal() {
       document.getElementById("modalAyuda").style.display = "none";
     }
+
+    function enviarModal() {
+    const contenido = document.getElementById("input-modal").value.trim();
+
+    if (contenido.length > 0) {
+      document.querySelector("#mensaje-modal").innerHTML = "<strong style='color:green'>✓ Mensaje enviado</strong>";
+      document.querySelector("#modalContenido button:nth-of-type(1)").style.display = "none"; // botón Enviar
+      document.querySelector("#modalContenido button:nth-of-type(2)").style.display = "none"; // botón Cerrar
+
+      setTimeout(() => cerrarModal(), 1500);
+    } else {
+      alert("Por favor escribe tu mensaje antes de enviar.");
+    }
+  }
+
 
     // Cargar datos desde localStorage
     const datos = JSON.parse(localStorage.getItem("datosServicio")) || {};
