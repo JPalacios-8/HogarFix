@@ -1,29 +1,49 @@
-function login(event) 
-{
-    event.preventDefault();
-    const userInput = document.getElementById("user").value;
-    const passwordIngresado = document.getElementById("password").value;
-    const mensajeError = document.getElementById("mensaje-error");
-  
-    // Obtener datos del usuario registrado
-    const datosGuardados = localStorage.getItem("usuarioRegistrado");
-  
-    if (!datosGuardados) {
-      alert("No hay usuarios registrados.");
+import { auth, db } from "../firebase-config.js";
+import {
+  signInWithEmailAndPassword,
+  fetchSignInMethodsForEmail
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+async function login(event) {
+  event.preventDefault();
+
+  const userInput = document.getElementById("user").value.trim();
+  const password = document.getElementById("password").value;
+  const mensajeError = document.getElementById("mensaje-error");
+
+  try {
+    // Si el input parece un número, intenta añadir dominio de email, así funciona firebase para autenticar
+    const isPhone = /^[0-9]{10,}$/.test(userInput);
+    const emailFormatted = isPhone ? `${userInput}@hogarfixapp.com` : userInput;
+
+    const signInMethods = await fetchSignInMethodsForEmail(auth, emailFormatted);
+    if (signInMethods.length === 0) {
+      mensajeError.textContent = "Este usuario no existe.";
       return;
     }
-  
-    const usuario = JSON.parse(datosGuardados);
-  
-    // Validar email y contraseña
-    const usuarioValido = 
-    (usuario.email === userInput || usuario.celular === userInput) &&
-    usuario.password === passwordIngresado;
 
-  if (usuarioValido) {
-    alert("¡Inicio de sesión exitoso!");
-    window.location.href = "home.html";
-  } else {
-    alert("Correo, celular o contraseña incorrectos.");
+    const credenciales = await signInWithEmailAndPassword(auth, emailFormatted, password);
+    const uid = credenciales.user.uid;
+
+    // Verifica si es usuario o proveedor
+    const docUsuario = await getDoc(doc(db, "usuarios", uid));
+    const docProveedor = await getDoc(doc(db, "proveedores", uid));
+
+    if (docUsuario.exists()) {
+      alert("¡Inicio de sesión como Usuario exitoso!");
+      window.location.href = "home.html";
+    } else if (docProveedor.exists()) {
+      alert("¡Inicio de sesión como Proveedor exitoso!");
+      window.location.href = "informacion_proveedor.html";
+    } else {
+      mensajeError.textContent = "Tu cuenta no está registrada correctamente.";
+    }
+  } catch (error) {
+    console.error("Error al iniciar sesión:", error);
+    mensajeError.textContent = "Correo, celular o contraseña incorrectos.";
   }
-  }
+}
+
+window.login = login;

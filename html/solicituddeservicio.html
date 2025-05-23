@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solicitud de Servicio</title>
+  <link rel="stylesheet" href="../css/solicituddeservicio.css">
+</head>
+<body>
+    <header>
+    <div class="logo">
+      <img src="../imagenes/logoSinLetras.jpg" alt="HogarFix Logo" />
+      <button class="btn-volverfa" onclick="window.location.href='home.html'">&#8592;</button>
+    </div>
+    <div class="menu">
+      <a href="perfil.html"><img src="../imagenes/menu (1).png" alt="Menú" /></a>
+    </div>
+    </header>
+  <main class="formulario-container">
+    <h2 id="titulo-servicio">Servicio escogido: </h2>
+
+    <form action="#" method="post" class="formulario">
+      <input type="hidden" name="servicio" id="servicioInput">
+
+      <label for="fecha">Fecha:</label>
+      <input type="date" id="fecha" name="fecha" required>
+
+      <label for="hora">Hora:</label>
+      <input type="time" id="hora" name="hora" required>
+
+      <label for="direccion">Dirección:</label>
+      <input type="text" id="direccion" name="direccion" required>
+
+      <label for="descripcion">Descripción del servicio:</label>
+      <textarea id="descripcion" name="descripcion" rows="4" required></textarea>
+
+      <button type="submit" class="btn">ENVIAR SOLICITUD</button>
+    </form>
+  </main>
+  </body>
+
+  <script>
+    // Leer parámetro de la URL
+    const params = new URLSearchParams(window.location.search);
+    const servicio = params.get("servicio");
+
+    // Mapear id a nombre mostrado
+    const nombresServicios = {
+      jardineria: "JARDINERÍA",
+      fontaneria: "FONTANERÍA",
+      electricista: "ELECTRICISTA",
+      aseo: "ASEO GENERAL"
+    };
+
+    // Actualizar título y campo oculto si existe el servicio
+    if (servicio && nombresServicios[servicio]) {
+      document.getElementById("titulo-servicio").textContent = `Servicio escogido: ${nombresServicios[servicio]}`;
+      document.getElementById("servicioInput").value = nombresServicios[servicio];
+    } else {
+      document.getElementById("titulo-servicio").textContent = "Servicio no reconocido";
+    }
+
+    
+    // ✅ Guardar datos del formulario y redirigir a confirmación
+  document.querySelector(".formulario").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const datos = {
+      fecha: document.getElementById("fecha").value,
+      hora: document.getElementById("hora").value,
+      direccion: document.getElementById("direccion").value,
+      descripcion: document.getElementById("descripcion").value,
+      servicio: document.getElementById("servicioInput").value
+    };
+
+    localStorage.setItem("datosServicio", JSON.stringify(datos));
+    window.location.href = "notificaciones.html";
+  });
+  </script>
+</body>
+</html>
