@@ -13,6 +13,12 @@ export async function guardarUsuario(event) {
   const ciudad = document.getElementById("ciudad").value;
   const celular = document.getElementById("celular").value;
 
+  if (!email || !password || !nombre || !cc || !ciudad || !celular) {
+  alert("Por favor, completa todos los campos.");
+  return;
+}
+
+
   try {
     // Crear usuario en Firebase Authentication
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
@@ -39,3 +45,5 @@ export async function guardarUsuario(event) {
     alert("Error al registrar: " + error.message);
   }
 }
+
+document.getElementById("formulario-usuario").addEventListener("submit", guardarUsuario);

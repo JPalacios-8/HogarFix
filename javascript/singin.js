@@ -1,12 +1,10 @@
-import { auth, db } from "../firebase-config.js";
+import { auth, db } from "./firebase-config.js";
 import {
   signInWithEmailAndPassword,
-  fetchSignInMethodsForEmail
+  fetchSignInMethodsForEmail,
+  sendPasswordResetEmail
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-import { sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
 
 async function login(event) {
   event.preventDefault();
@@ -16,20 +14,19 @@ async function login(event) {
   const mensajeError = document.getElementById("mensaje-error");
 
   try {
-    // Si el input parece un número, intenta añadir dominio de email, así funciona firebase para autenticar
     const isPhone = /^[0-9]{10,}$/.test(userInput);
     const emailFormatted = isPhone ? `${userInput}@hogarfixapp.com` : userInput;
 
     const signInMethods = await fetchSignInMethodsForEmail(auth, emailFormatted);
+    console.log("Métodos disponibles para el usuario:", signInMethods);
     if (signInMethods.length === 0) {
       mensajeError.textContent = "Este usuario no existe.";
       return;
     }
-
+    console.log("Email formateado:", emailFormatted);
     const credenciales = await signInWithEmailAndPassword(auth, emailFormatted, password);
     const uid = credenciales.user.uid;
 
-    // Verifica si es usuario o proveedor
     const docUsuario = await getDoc(doc(db, "usuarios", uid));
     const docProveedor = await getDoc(doc(db, "proveedores", uid));
 
@@ -48,4 +45,18 @@ async function login(event) {
   }
 }
 
-window.login = login;
+// Conectar el formulario con el login
+document.getElementById("form-login").addEventListener("submit", login);
+
+// Funcionalidad de "Olvidé mi contraseña"
+document.querySelector(".btn-olvido").addEventListener("click", async () => {
+  const email = prompt("Introduce tu correo registrado:");
+  if (email) {
+    try {
+      await sendPasswordResetEmail(auth, email);
+      alert("Se ha enviado un enlace de recuperación a tu correo.");
+    } catch (error) {
+      alert("Error al enviar correo: " + error.message);
+    }
+  }
+});
