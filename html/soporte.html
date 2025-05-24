@@ -191,7 +191,7 @@
       <button onclick="mostrarModal('servicio')">Ayuda con un servicio</button>
       <button onclick="mostrarModal('proveedor')">Reportar un proveedor</button>
       <button onclick="mostrarModal('app')">Reportar problemas con la app</button>
-      <button onclick="window.location.href='miperfil.html'">Cuenta</button>
+      <button onclick="irACuenta()">Cuenta</button>
     </div>
 </div>
 </main>
@@ -237,6 +237,15 @@
       setTimeout(() => cerrarModal(), 1500);
     } else {
       alert("Por favor escribe tu mensaje antes de enviar.");
+    }
+  }
+  function irACuenta() {
+    const origen = localStorage.getItem("origenSoporte");
+
+    if (origen === "proveedor") {
+      window.location.href = "perfil-proveedores.html";
+    } else {
+      window.location.href = "perfil.html"; // por defecto usuario
     }
   }
 

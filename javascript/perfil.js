@@ -69,3 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function irASoporteDesdeUsuario() {
+    localStorage.setItem("origenSoporte", "usuario");
+    window.location.href = "soporte.html";
+  }

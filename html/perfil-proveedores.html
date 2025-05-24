@@ -155,6 +155,57 @@
       display: block;
       cursor: pointer;
     }
+    .modal-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  width: 90%;
+  max-width: 350px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  position: relative;
+  color: #333;
+  font-family: sans-serif;
+}
+
+.modal-content h3 {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.review {
+  background-color: #f4f4f4;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.review p {
+  margin: 4px 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #888;
+  cursor: pointer;
+}
+
 
     footer {
       background-color: #333;
@@ -211,11 +262,50 @@
     <strong style="color: #333;">PUNTUACIÓN MEDIA</strong>
     <div style="font-size: 20px; color: #f2c94c; margin: 5px 0;">⭐ ⭐ ⭐ ⭐ ☆</div>
     <p><strong>TOTAL DE CALIFICACIONES: 10</strong></p>
-    <button style="background-color: #f2c94c; border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold;">VER CALIFICACIONES</button>
+    <button onclick="abrirCalificaciones()" style="background-color: #f2c94c; border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold;">VER CALIFICACIONES</button>
   </div>
+  <!-- MODAL DE CALIFICACIONES -->
+<div id="modalCalificaciones" style="display: none;" class="modal-overlay">
+  <div class="modal-content">
+    <button class="close-btn" onclick="cerrarCalificaciones()">✖</button>
+    <h3>Calificaciones</h3>
+
+    <div class="review">
+      <p><strong>Usuario12</strong> ★★★★★</p>
+      <p>"Excelente servicio, muy puntual y profesional."</p>
+    </div>
+
+    <div class="review">
+      <p><strong>Usuario23</strong> ★★★★☆</p>
+      <p>"Buen trabajo, aunque llegó 10 minutos tarde."</p>
+    </div>
+
+    <div class="review">
+      <p><strong>Usuario63</strong> ★★★★★</p>
+      <p>"Recomiendo 100%, muy eficiente."</p>
+    </div>
+
+    <div class="review">
+      <p><strong>Usuario24</strong> ★★★☆☆</p>
+      <p>"Cumplió con lo justo, esperaba más atención al detalle."</p>
+    </div>
+  </div>
+</div>
+
 </main>
 
   <footer>HOGARFIX</footer>
+
+  <script>
+  function abrirCalificaciones() {
+    document.getElementById("modalCalificaciones").style.display = "flex";
+  }
+
+  function cerrarCalificaciones() {
+    document.getElementById("modalCalificaciones").style.display = "none";
+  }
+</script>
+
 
 </body>
 </html>

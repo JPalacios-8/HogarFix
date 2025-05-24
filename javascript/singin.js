@@ -27,7 +27,7 @@ async function login(event) {
     } else if (docProveedor.exists()) {
       mostrarToast("Inicio de sesión como Proveedor...");
       setTimeout(() => {
-        window.location.href = "informacion_proveedor.html";
+        window.location.href = "home-proveedor.html";
       }, 2000);
     } else {
       mensajeError.textContent = "Tu cuenta no está registrada correctamente en Firestore.";
