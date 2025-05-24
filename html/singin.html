@@ -24,8 +24,19 @@
     </form>
   </div>
 
+  <!-- Contenedor recuperación contraseña -->
+  <div class="recuperar-contrasena-container" style="display:none; margin-top: 1rem; text-align: center;">
+    <h3>Recuperar Contraseña</h3>
+    <input type="email" id="email-recuperar" placeholder="Ingresa tu correo" />
+    <button id="btn-enviar-recuperacion">Enviar enlace</button>
+    <button id="btn-cancelar-recuperacion">Cancelar</button>
+    <p id="mensaje-recuperacion" style="color: red; margin-top: 0.5rem;"></p>
+  </div>
+
+
   <!-- Botón para recuperar contraseña -->
   <button type="button" class="btn-olvido">OLVIDÉ LA CONTRASEÑA</button>
+
 
   <!-- Script de funcionalidad -->
   <script type="module" src="../javascript/singin.js"></script>
