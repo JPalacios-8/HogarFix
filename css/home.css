@@ -50,10 +50,32 @@ header {
   margin-left: 15px;
 }
 
-main {
-  padding: 20px;
-  text-align: center;
+
+.icon-bar {
+  position: relative;
+  top: 10px;
+  left: 10px;
+  display: flex;
+  gap: 10px;
+  z-index: 999;
 }
+
+.icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.perfil-btn {
+  background-color: #f2c94c;
+  color: #333;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+
 
 .carousel-container {
   position: relative;
