@@ -8,7 +8,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyCQxzseGEIaVchjG8FfNdYWdUfdfFJEn_k",
   authDomain: "hogarfixapp.firebaseapp.com",
   projectId: "hogarfixapp",
-  storageBucket: "hogarfixapp.firebasestorage.app",
+  storageBucket: "hogarfixapp.appspot.com",
   messagingSenderId: "1094738031171",
   appId: "1:1094738031171:web:f1f565023e034780bbdaf6"
 };
