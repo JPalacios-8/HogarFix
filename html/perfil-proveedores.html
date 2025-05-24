@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Perfil del Proveedor</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background: #5a5c57;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    header {
+      background-color: #5a5c57;
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      color: white;
+    }
+
+    header img {
+      height: 50px;
+      margin: auto;
+      margin-right: 1px;
+    }
+
+    .btn-volver {
+      background-color: #f2c94c;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .btn-titulo {
+      background-color: #f2c94c;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 20px;
+      font-weight: bold;
+      margin: 15px auto;
+      display: block;
+      cursor: default;
+    }
+
+    main {
+      background-color: #eee;
+      padding: 15px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+    }
+
+    .avatar-container {
+      text-align: center;
+      position: relative;
+    }
+
+    .avatar {
+      background-color: #f2c94c;
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin: auto;
+      position: relative;
+    }
+
+    .editar-icono {
+      position: absolute;
+      right: 10px;
+      top: 0;
+      cursor: pointer;
+    }
+
+    .campo {
+      margin: 15px 0;
+    }
+
+    .campo label {
+      font-weight: bold;
+      display: inline-block;
+      min-width: 90px;
+      background-color: #5a5c57;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 10px;
+      margin-right: 10px;
+    }
+
+    .info {
+      border-bottom: 1px solid #aaa;
+      padding: 5px 0;
+      display: inline-block;
+      width: 200px;
+    }
+
+    .perfil-laboral {
+      background-color: #444;
+      color: white;
+      padding: 10px;
+      border-radius: 20px;
+      text-align: center;
+      font-weight: bold;
+      margin: 20px auto;
+      width: 200px;
+      cursor: default;
+    }
+
+    .servicios {
+      background-color: #5a5c57;
+      color: white;
+      border-radius: 20px;
+      padding: 15px;
+      text-align: left;
+      width: 90%;
+      margin: auto;
+      font-size: 14px;
+    }
+
+    .rating {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .rating h4 {
+      border-top: 2px solid #aaa;
+      padding-top: 10px;
+      color: #333;
+    }
+
+    .stars {
+      font-size: 28px;
+      color: #f2c94c;
+    }
+
+    .rating span {
+      display: block;
+      margin-top: 5px;
+      font-weight: bold;
+    }
+
+    .btn-secundario {
+      background-color: #f2c94c;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      margin: 10px auto;
+      display: block;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #333;
+      color: #f2c94c;
+      text-align: center;
+      padding: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button class="btn-volver" onclick="history.back()">←</button>
+    <img src="/imagenes/logoSinLetras.jpg" alt="Logo" />
+  </header>
+
+  <button class="btn-titulo">MI PERFIL</button>
+
+ <main style="padding: 10px; background-color: #eee; text-align: center; font-size: 14px;">
+  <div style="position: relative;">
+    <div style="width: 120px; height: 120px; border-radius: 50%; background-color: #f2c94c; display: flex; align-items: center; justify-content: center; margin: auto;">
+  <img src="../imagenes/User.png" alt="Perfil" style="width: 50%; height: 50%;">
+</div>
+
+    <img src="../imagenes/editar.png" alt="Editar" style="position: absolute; top: 0; right: 0; width: 30px; cursor: pointer;">
+  </div>
+
+  <div style="text-align: left; margin: 0 auto; max-width: 300px;">
+    <p><span style="background: #444; color: white; padding: 3px 10px; border-radius: 10px;">NOMBRE</span> PEDRO GÓMEZ</p>
+    <p><span style="background: #444; color: white; padding: 3px 10px; border-radius: 10px;">C.C</span> 1246788853</p>
+    <p><span style="background: #444; color: white; padding: 3px 10px; border-radius: 10px;">RH</span> A+</p>
+    <p style="display: flex; align-items: center; gap: 10px;">
+    <span style="background: #444; color: white; padding: 3px 10px; border-radius: 10px; white-space: nowrap;">PROFESIÓN</span>
+    <span style="white-space: nowrap;">ELECTRICISTA PROFESIONAL</span>
+    </p>
+  </div>
+
+  <button style="background-color: #444; color: white; border: none; padding: 8px 20px; border-radius: 20px; margin: 10px 0;">PERFIL LABORAL</button>
+
+  <div style="background: #444; color: white; padding: 10px 20px; border-radius: 20px; margin: 10px auto; max-width: 300px; text-align: left;">
+    <strong>SERVICIOS QUE SE PRESTAN:</strong>
+    <ul style="margin: 5px 0 0 15px; padding-left: 0;">
+      <li> FONTANERÍA</li>
+      <li> ELECTRICISTA</li>
+    </ul>
+  </div>
+
+  <hr style="margin: 10px 0;">
+
+  <div>
+    <strong style="color: #333;">PUNTUACIÓN MEDIA</strong>
+    <div style="font-size: 20px; color: #f2c94c; margin: 5px 0;">⭐ ⭐ ⭐ ⭐ ☆</div>
+    <p><strong>TOTAL DE CALIFICACIONES: 10</strong></p>
+    <button style="background-color: #f2c94c; border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold;">VER CALIFICACIONES</button>
+  </div>
+</main>
+
+  <footer>HOGARFIX</footer>
+
+</body>
+</html>
