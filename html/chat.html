@@ -219,6 +219,7 @@
       font-weight: bold;
       cursor: pointer;
     }
+    
   </style>
 </head>
 <body>
@@ -229,16 +230,15 @@
         <span style="color: #f2c94c; font-weight: bold; font-size: 18px;">HOGARFIX CHAT</span>
         </div>
 
-      <div class="header-title">Pedro Gomez<br>
+      <div class="header-title">
+        <span id="chat-nombre"></span><br>
         <small style="color: #33be09;">Online</small>
-    </div>
+      </div>
+
     </div>
 
-    <div class="messages" id="chat">
-      <div class="bubble user">Hola, quiero negociar el servicio que solicité</div>
-      <div class="bubble proveedor">Hola, buen día</div>
-      <div class="bubble proveedor">Por supuesto, ya leí su solicitud de servicio, mis tarifas son las siguientes: $50.000</div>
-    </div>
+    <div class="messages" id="chat"></div>
+
 
     <div class="respuesta-precio" id="respuestaPrecio">
       <p><strong>¿Está de acuerdo con el precio acordado?</strong></p>
@@ -311,6 +311,48 @@
         document.getElementById('respuestaPrecio').style.display = 'block'; // 🔁 Mostrar otra vez opciones SI / NO
       }
     }
+        window.addEventListener('DOMContentLoaded', () => {
+      // Detectar si es chat de proveedor o usuario
+      const urlParams = new URLSearchParams(window.location.search);
+      const origen = urlParams.get('origen'); // "usuario" o "proveedor"
+
+      let nombreChat = "Pedro Gomez"; // por defecto
+      if (origen === "proveedor") {
+        const usuario = localStorage.getItem("usuarioSeleccionado") || "Usuario";
+        nombreChat = usuario;
+      }
+
+      document.getElementById("chat-nombre").textContent = nombreChat;
+    });
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const origen = urlParams.get('origen');
+
+      let nombreChat = "Pedro Gomez";
+      const chat = document.getElementById("chat");
+
+      if (origen === "proveedor") {
+        const usuario = localStorage.getItem("usuarioSeleccionado") || "Usuario";
+        nombreChat = usuario;
+
+        // Mensajes del proveedor al iniciar
+        chat.innerHTML = `
+          <div class="bubble proveedor">Hola, soy ${nombreChat}</div>
+          <div class="bubble proveedor">Está bien si lo dejamos en 70000?</div>
+        `;
+      } else {
+        // Mensajes del usuario al iniciar
+        chat.innerHTML = `
+          <div class="bubble proveedor">Hola, para ese día podría ir unos 30 minutos más tarde de lo que programaste, pero ofrezo un muy buen precio</div>
+          <div class="bubble proveedor">Que tal si lo dejamos en 60000?</div>
+        `;
+      }
+
+      // Actualiza nombre en el encabezado
+      document.getElementById("chat-nombre").textContent = nombreChat + " Online";
+    });
+
+
   </script>
 </body>
 </html>
