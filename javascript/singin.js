@@ -12,22 +12,23 @@ async function login(event) {
   const mensajeError = document.getElementById("mensaje-error");
 
   try {
-    console.log("Intentando login directo con:", email);
+    
     const credenciales = await signInWithEmailAndPassword(auth, email, password);
-    console.log("Login exitoso, UID:", credenciales.user.uid);
-
     const uid = credenciales.user.uid;
 
-    // Obtener documentos Firestore para usuario o proveedor
     const docUsuario = await getDoc(doc(db, "usuarios", uid));
     const docProveedor = await getDoc(doc(db, "proveedores", uid));
 
     if (docUsuario.exists()) {
-      alert("¡Inicio de sesión como Usuario exitoso!");
-      window.location.href = "home.html";
+      mostrarToast("Inicio de sesión como Usuario...");
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 2000);
     } else if (docProveedor.exists()) {
-      alert("¡Inicio de sesión como Proveedor exitoso!");
-      window.location.href = "informacion_proveedor.html";
+      mostrarToast("Inicio de sesión como Proveedor...");
+      setTimeout(() => {
+        window.location.href = "informacion_proveedor.html";
+      }, 2000);
     } else {
       mensajeError.textContent = "Tu cuenta no está registrada correctamente en Firestore.";
     }
@@ -38,7 +39,17 @@ async function login(event) {
   }
 }
 
+function mostrarToast(mensaje) {
+  const toast = document.getElementById("mensaje-toast");
+  toast.textContent = mensaje;
+  toast.style.display = "block";
+  setTimeout(() => {
+    toast.style.display = "none";
+  }, 1000);
+}
+
 document.getElementById("form-login").addEventListener("submit", login);
+
 
 
 // Conectar el formulario con el login
