@@ -18,12 +18,11 @@ async function login(event) {
     const emailFormatted = isPhone ? `${userInput}@hogarfixapp.com` : userInput;
 
     const signInMethods = await fetchSignInMethodsForEmail(auth, emailFormatted);
-    console.log("Métodos disponibles para el usuario:", signInMethods);
     if (signInMethods.length === 0) {
       mensajeError.textContent = "Este usuario no existe.";
       return;
     }
-    console.log("Email formateado:", emailFormatted);
+    
     const credenciales = await signInWithEmailAndPassword(auth, emailFormatted, password);
     const uid = credenciales.user.uid;
 
