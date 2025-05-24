@@ -19,9 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (docSnap.exists()) {
         const data = docSnap.data();
+        console.log("Datos del usuario:", data);
         nombreElem.textContent = data.nombre || "No disponible";
-        ubicacionElem.textContent = data.ubicacion || "No disponible";
-        telefonoElem.textContent = data.telefono || "No disponible";
+        ubicacionElem.textContent = data.ciudad || "No disponible";
+        telefonoElem.textContent = data.celular || "No disponible";
       } else {
         nombreElem.textContent = "No registrado";
         ubicacionElem.textContent = "No registrado";
