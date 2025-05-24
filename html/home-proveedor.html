@@ -146,7 +146,7 @@
     <div class="solicitud" onclick="mostrarDetalle('Usuario2','Fontanería', '10:30 AM', 'Calle 80 #20-15, Bogotá')">
     <div class="solicitud-icon">👤</div>
     <div class="solicitud-text">
-        Usuario1<br><small>Solicitud Fontanería</small>
+        Usuario2<br><small>Solicitud Fontanería</small>
     </div>
     </div>
 
@@ -154,7 +154,7 @@
     <div class="solicitud" onclick="mostrarDetalle('Usuario3','Electricista', '04:30 PM', 'Calle 100 #12-34, Bogotá')">
     <div class="solicitud-icon">👤</div>
     <div class="solicitud-text">
-        Usuario1<br><small>Solicitud Electricista</small>
+        Usuario3<br><small>Solicitud Electricista</small>
     </div>
     </div>
 
@@ -175,6 +175,7 @@
 
     <div class="botones">
       <button onclick="window.location.href='miperfil.html'">MI PERFIL</button>
+      <button onclick="window.location.href='historialdeservicios.html?origen=proveedor'">HISTORIAL DE SERVICIOS</button>
       <button onclick="window.location.href='soporte.html'">SOPORTE</button>
     </div>
   </div>
@@ -235,7 +236,7 @@
   }
 
   function iniciarChatProveedor() {
-    window.location.href = "chat-proveedor.html";
+    window.location.href = "chat.html?origen=proveedor";
   }
 </script>
 

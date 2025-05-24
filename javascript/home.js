@@ -36,3 +36,15 @@ carousel.addEventListener('touchend', e => {
   }
   updateCarousel();
 });
+function abrirModalChat() {
+  document.getElementById("modalChatActivo").style.display = "flex";
+}
+
+function cerrarModalChat() {
+  document.getElementById("modalChatActivo").style.display = "none";
+}
+
+function redirigirChat() {
+  window.location.href = "chat.html?origen=usuario";
+}
+

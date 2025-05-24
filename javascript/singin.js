@@ -1,33 +1,24 @@
-import { auth, db } from "../firebase-config.js";
+import { auth, db } from "./firebase-config.js";
 import {
-  signInWithEmailAndPassword,
-  fetchSignInMethodsForEmail
+  signInWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 async function login(event) {
   event.preventDefault();
 
-  const userInput = document.getElementById("user").value.trim();
+  const email = document.getElementById("user").value.trim().toLowerCase();
   const password = document.getElementById("password").value;
   const mensajeError = document.getElementById("mensaje-error");
 
   try {
-    // Si el input parece un número, intenta añadir dominio de email, así funciona firebase para autenticar
-    const isPhone = /^[0-9]{10,}$/.test(userInput);
-    const emailFormatted = isPhone ? `${userInput}@hogarfixapp.com` : userInput;
+    console.log("Intentando login directo con:", email);
+    const credenciales = await signInWithEmailAndPassword(auth, email, password);
+    console.log("Login exitoso, UID:", credenciales.user.uid);
 
-    const signInMethods = await fetchSignInMethodsForEmail(auth, emailFormatted);
-    if (signInMethods.length === 0) {
-      mensajeError.textContent = "Este usuario no existe.";
-      return;
-    }
-
-    const credenciales = await signInWithEmailAndPassword(auth, emailFormatted, password);
     const uid = credenciales.user.uid;
 
-    // Verifica si es usuario o proveedor
+    // Obtener documentos Firestore para usuario o proveedor
     const docUsuario = await getDoc(doc(db, "usuarios", uid));
     const docProveedor = await getDoc(doc(db, "proveedores", uid));
 
@@ -38,12 +29,60 @@ async function login(event) {
       alert("¡Inicio de sesión como Proveedor exitoso!");
       window.location.href = "informacion_proveedor.html";
     } else {
-      mensajeError.textContent = "Tu cuenta no está registrada correctamente.";
+      mensajeError.textContent = "Tu cuenta no está registrada correctamente en Firestore.";
     }
+
   } catch (error) {
-    console.error("Error al iniciar sesión:", error);
-    mensajeError.textContent = "Correo, celular o contraseña incorrectos.";
+    console.error("Error login:", error.message);
+    mensajeError.textContent = "Correo o contraseña incorrectos o usuario no existe.";
   }
 }
 
-window.login = login;
+document.getElementById("form-login").addEventListener("submit", login);
+
+
+// Conectar el formulario con el login
+document.getElementById("form-login").addEventListener("submit", login);
+
+
+const btnOlvido = document.querySelector(".btn-olvido");
+const contenedorRecuperacion = document.querySelector(".recuperar-contrasena-container");
+const inputEmailRecuperar = document.getElementById("email-recuperar");
+const btnEnviarRecuperacion = document.getElementById("btn-enviar-recuperacion");
+const btnCancelarRecuperacion = document.getElementById("btn-cancelar-recuperacion");
+const mensajeRecuperacion = document.getElementById("mensaje-recuperacion");
+
+// Mostrar formulario recuperación
+btnOlvido.addEventListener("click", () => {
+  contenedorRecuperacion.style.display = "block";
+  mensajeRecuperacion.textContent = "";
+  inputEmailRecuperar.value = "";
+});
+
+// Cancelar recuperación
+btnCancelarRecuperacion.addEventListener("click", () => {
+  contenedorRecuperacion.style.display = "none";
+  mensajeRecuperacion.textContent = "";
+});
+
+// Enviar correo recuperación
+btnEnviarRecuperacion.addEventListener("click", async () => {
+  const email = inputEmailRecuperar.value.trim().toLowerCase();
+
+  if (!email) {
+    mensajeRecuperacion.textContent = "Por favor, ingresa un correo válido.";
+    return;
+  }
+
+  try {
+    await sendPasswordResetEmail(auth, email);
+    mensajeRecuperacion.style.color = "green";
+    mensajeRecuperacion.textContent = "¡Enlace de recuperación enviado! Revisa tu correo.";
+  } catch (error) {
+    mensajeRecuperacion.style.color = "red";
+    mensajeRecuperacion.textContent = "Error: " + error.message;
+  }
+});
+
+
+document.getElementById("form-login").addEventListener("submit", login);
