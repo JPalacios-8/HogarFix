@@ -1,27 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Singin Responsive</title>
-  <link rel="stylesheet" href="../css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar Sesión</title>
+  <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body class="pagina-singin">
-    <button class="btn-volver" onclick="window.location.href='index.html'">←</button>
-    <img src="../imagenes/logoGrisAmarillo.jpg" alt="logo" class="logo-superior">
+  <!-- Botón de volver -->
+  <button class="btn-volver" onclick="window.location.href='index.html'">←</button>
+
+  <!-- Logo superior -->
+  <img src="../imagenes/logoGrisAmarillo.jpg" alt="logo" class="logo-superior" />
+  
+  <!-- Contenedor del formulario -->
   <div class="singin-container">
     <h2>¡BIENVENIDO!</h2>
-    <form onsubmit="login(event); return false">
-      <input type="text" id="user" placeholder="E-mail o teléfono" required>
-      <input type="password" id="password" placeholder="Contraseña" required>
+    <form id="form-login">
+      <input type="text" id="user" placeholder="E-mail o teléfono" required />
+      <input type="password" id="password" placeholder="Contraseña" required />
       <button type="submit" class="btn-ingresar">INGRESAR</button>
       <p id="mensaje-error" style="color: red; text-align: center; margin-top: 1rem;"></p>
     </form>
-    <script src="../javascript/singin.js"></script>
   </div>
-  <button type="button" class="btn-olvido">OLVIDÉ LA CONTRASEÑA</button>
-</body>
 
-  
+  <!-- Contenedor recuperación contraseña -->
+  <div class="recuperar-contrasena-container" style="display:none; margin-top: 1rem; text-align: center;">
+    <h3>Recuperar Contraseña</h3>
+    <input type="email" id="email-recuperar" placeholder="Ingresa tu correo" />
+    <button id="btn-enviar-recuperacion">Enviar enlace</button>
+    <button id="btn-cancelar-recuperacion">Cancelar</button>
+    <p id="mensaje-recuperacion" style="color: red; margin-top: 0.5rem;"></p>
+  </div>
+
+<div id="mensaje-toast" style="display:none; position:fixed; top:10px; left:50%; transform:translateX(-50%); background:#ffe23e; color:rgb(0, 0, 0); padding:10px; border-radius:5px; z-index:1000;">Inicio de sesión exitoso</div>
+
+
+
+  <!-- Botón para recuperar contraseña -->
+  <button type="button" class="btn-olvido">OLVIDÉ LA CONTRASEÑA</button>
+
+
+  <!-- Script de funcionalidad -->
+  <script type="module" src="../javascript/singin.js"></script>
+</body>
 </html>

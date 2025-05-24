@@ -7,30 +7,35 @@
   <link rel="stylesheet" href="../css/styles.css" />
 </head>
 <body class="pagina-inicio">
-  <button class="btn-volverfa" onclick="window.location.href='perfil.html'">&#8592;</button>
+  <button class="btn-volverfa" onclick="window.location.href='home.html'">&#8592;</button>
 
   <div class="logo-bar">
     <img src="../imagenes/logoSinLetras.jpg" alt="Logo" class="logo-superior" />
-    <button class="btn-singup">MI PERFIL</button>
+    <h2>MI PERFIL</h2>
   </div>
 
   <div class="contenedor-perfil">
     <div class="perfil-img-wrapper">
-      <img src="../imagenes/perfil-imagen.png" alt="Perfil" id="img-preview" class="perfil-img"/>
+      <img src="../imagenes/perfil-imagen.png" alt="Perfil" id="img-preview" class="perfil-img" />
       <label for="input-foto" class="editar-texto">EDITAR</label>
       <input type="file" id="input-foto" accept="image/*" style="display: none;" />
       <button id="btn-eliminar" class="btn-eliminar">Eliminar Foto</button>
     </div>
 
-    <button class="btn-proveedor">NOMBRE</button>
-    <button class="btn-proveedor">UBICACIÓN</button>
-    <button class="btn-proveedor">TELÉFONO</button>
+    <!-- Aquí mostramos los datos que se cargan desde Firestore -->
+    <div class="perfil-datos">
+      <p><strong>Nombre:</strong> <span id="nombre">Cargando...</span></p>
+      <p><strong>Ubicación:</strong> <span id="ubicacion">Cargando...</span></p>
+      <p><strong>Teléfono:</strong> <span id="telefono">Cargando...</span></p>
+      <p><strong>Email:</strong> <span id="email">Cargando...</span></p>
+    </div>
   </div>
 
-<div class="franja-inferior">
-  HOGARFIX
-</div>
+  <div class="franja-inferior">
+    HOGARFIX
+  </div>
 
-  <script src="../js/perfil.js"></script>
+  
+  <script type="module" src="../javascript/perfil.js"></script>
 </body>
 </html>

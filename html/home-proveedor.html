@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Proveedor</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #444;
+      color: white;
+    }
+
+    header {
+      background-color: #5a5c57;
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+    }
+
+    .btn-back {
+      background-color: #f2c94c;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 35px;
+      font-size: 18px;
+      margin-right: 15px;
+      cursor: pointer;
+    }
+
+    .logo {
+      flex: 1;
+      text-align: center;
+    }
+
+    .logo img {
+      height: 40px;
+    }
+
+    .contenedor {
+      max-width: 400px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h2 {
+      background-color: #f2c94c;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+
+    .solicitud {
+      background-color: #ccc;
+      color: #333;
+      border-radius: 20px;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .solicitud-icon {
+      background-color: #ddd;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      margin-right: 10px;
+    }
+
+    .solicitud-text {
+      flex: 1;
+    }
+
+    .botones {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .botones button {
+      background-color: #f2c94c;
+      border: none;
+      padding: 12px;
+      font-weight: bold;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .botones button:last-child {
+      background-color: #b28f42;
+    }
+    .perfil-btn {
+        background-color: #f2c94c;
+        color: #333;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        margin-top: 10px;
+        }
+
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      padding-bottom: 10px;
+      color: #f2c94c;
+      font-weight: bold;
+      letter-spacing: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="btn-back" onclick="window.history.back()">←</div>
+    <div class="logo">
+      <img src="../imagenes/logoSinLetras.jpg" alt="Logo">
+    </div>
+  </header>
+
+  <div class="contenedor">
+    <h2>SOLICITUDES DISPONIBLES</h2>
+
+    <div class="solicitud" onclick="mostrarDetalle('Usuario1','Fontanería', '09:30 AM', 'Cra 10 #24-76, Bogotá')">
+        <div class="solicitud-icon">👤</div>
+        <div class="solicitud-text">
+            Usuario1<br><small>Solicitud Fontanería</small>
+        </div>
+     </div>
+
+
+    <div class="solicitud" onclick="mostrarDetalle('Usuario2','Fontanería', '10:30 AM', 'Calle 80 #20-15, Bogotá')">
+    <div class="solicitud-icon">👤</div>
+    <div class="solicitud-text">
+        Usuario2<br><small>Solicitud Fontanería</small>
+    </div>
+    </div>
+
+
+    <div class="solicitud" onclick="mostrarDetalle('Usuario3','Electricista', '04:30 PM', 'Calle 100 #12-34, Bogotá')">
+    <div class="solicitud-icon">👤</div>
+    <div class="solicitud-text">
+        Usuario3<br><small>Solicitud Electricista</small>
+    </div>
+    </div>
+
+
+    <div class="solicitud"onclick="mostrarDetalle('Usuario4','Electricista', '03:45 PM', 'Cra 7 #60-12, Bogotá')">
+      <div class="solicitud-icon">👤</div>
+      <div class="solicitud-text">
+        Usuario4<br><small>Solicitud Electricista</small>
+      </div>
+    </div>
+
+    <div class="solicitud"onclick="mostrarDetalle('Usuario5','Fontanería', '11:30 AM', 'Calle 100 #12-34, Bogotá')">
+      <div class="solicitud-icon">👤</div>
+      <div class="solicitud-text">
+        Usuario5<br><small>Solicitud Fontanería</small>
+      </div>
+    </div>
+
+    <div class="botones">
+      <button onclick="window.location.href='miperfil.html'">MI PERFIL</button>
+      <button onclick="window.location.href='historialdeservicios.html?origen=proveedor'">HISTORIAL DE SERVICIOS</button>
+      <button onclick="window.location.href='soporte.html'">SOPORTE</button>
+    </div>
+  </div>
+
+  <div class="detalle-servicio" id="detalleSolicitud" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+  <div class="modal" style="background:#444; padding:20px; border-radius:20px; color:white; width:80%; max-width:350px; text-align:center;">
+    <button onclick="cerrarDetalleSolicitud()" style="position:absolute; top:10px; right:15px; font-size:18px; background:none; border:none; color:white; cursor:pointer;">✖</button>
+    <p><strong>DETALLE DE SOLICITUD</strong></p>
+    <p id="nombre-usuario-modal"></p>
+    <p id="tipo-servicio"></p>
+    <p id="hora-servicio"></p>
+    <p id="direccion-servicio"></p>
+    <button class="perfil-btn" onclick="aceptarSolicitud(localStorage.getItem('usuarioSeleccionado'))">Aceptar solicitud</button>
+
+
+
+  </div>
+</div>
+
+<div class="detalle-servicio" id="modalNegociarProveedor" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000;">
+  <div class="modal" style="background:#444; padding:20px; border-radius:20px; color:white; width:80%; max-width:350px; text-align:center;">
+    <button onclick="cerrarModalNegociar()" style="position:absolute; top:10px; right:15px; font-size:18px; background:none; border:none; color:white; cursor:pointer;">✖</button>
+    <p style="text-transform: lowercase; font-weight: bold;">
+      se procederá a iniciar el proceso de negociación con el usuario por medio de un chat privado
+    </p>
+    <button class="perfil-btn" onclick="iniciarChatProveedor()">Aceptar</button>
+  </div>
+</div>
+
+
+
+  <footer>HOGARFIX</footer>
+
+</body>
+<script>
+  function mostrarDetalle(usuario,servicio, hora, direccion) {
+    document.getElementById("nombre-usuario-modal").textContent = `Usuario: ${usuario}`;
+    document.getElementById("tipo-servicio").textContent = `Tipo de servicio: ${servicio}`;
+    document.getElementById("hora-servicio").textContent = `Hora: ${hora}`;
+    document.getElementById("direccion-servicio").textContent = `Dirección: ${direccion}`;
+   
+    localStorage.setItem("usuarioSeleccionado", usuario);
+    document.getElementById("detalleSolicitud").style.display = "flex";
+  }
+
+  function cerrarDetalleSolicitud() {
+    document.getElementById("detalleSolicitud").style.display = "none";
+  }
+  function aceptarSolicitud(usuario) {
+    localStorage.setItem("usuarioSeleccionado", usuario);
+    document.getElementById("detalleSolicitud").style.display = "none"; // oculta el primero
+    document.getElementById("modalNegociarProveedor").style.display = "flex"; // muestra el nuevo
+ }
+
+
+  function cerrarModalNegociar() {
+    document.getElementById("modalNegociarProveedor").style.display = "none";
+  }
+
+  function iniciarChatProveedor() {
+    window.location.href = "chat.html?origen=proveedor";
+  }
+</script>
+
+</html>

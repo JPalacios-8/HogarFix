@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Historial de Servicios</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #eee;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #5a5c57;
+      color: white;
+      padding: 10px 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    header button {
+      background-color: #f2c94c;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    header img {
+      height: 30px;
+    }
+
+    header h2 {
+      margin: 0;
+      flex: 1;
+      text-align: center;
+      font-size: 18px;
+    }
+
+    main {
+    padding: 20px;
+    min-height: calc(100vh - 120px); /* Ajusta según el tamaño del header y footer */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 25px;
+    }
+    .entrada {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .entrada p {
+      margin: 10px 0 0px;
+    }
+
+    .servicio {
+      background: white;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .servicio img {
+      width: 55px;
+      height: 55px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .servicio-info {
+      flex: 1;
+    }
+
+    .servicio-info strong {
+      display: block;
+      font-size: 16px;
+    }
+
+    .estado {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    .pendiente {
+      background-color: #f2c94c;
+      color: #333;
+    }
+
+    .realizado, .completado {
+      background-color: #a5d6a7;
+      color: #2e7d32;
+    }
+
+    footer {
+      background: #444;
+      color: #f2c94c;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button onclick="history.back()">←</button>
+    <h2 style="color: #f2c94c;">Historial de Servicios</h2>
+    
+    <img src="../imagenes/logoSinLetras.jpg" alt="Logo" />
+    
+  </header>
+
+  <main id="contenedor-historial"></main>
+
+  <footer>HOGARFIX</footer>
+
+  <script>
+    const origen = new URLSearchParams(window.location.search).get("origen");
+    const contenedor = document.getElementById("contenedor-historial");
+
+    if (origen === "proveedor") {
+      contenedor.innerHTML = `
+        <div class="entrada">
+          <p>Hoy, 24/02/2025</p>
+          <div class="servicio">
+            <img src="../imagenes/electricista.jpg" alt="">
+            <div class="servicio-info">
+              <strong>ELECTRICISTA</strong>
+              Solicitud del servicio<br>
+              <span class="estado pendiente">Servicio Pendiente</span>
+            </div>
+          </div>
+          <p>12/02/2025</p>
+          <div class="servicio">
+            <img src="../imagenes/electricista.jpg" alt="">
+            <div class="servicio-info">
+              <strong>ELECTRICISTA</strong>
+              Solicitud del servicio<br>
+              <span class="estado completado">Servicio Completado</span>
+            </div>
+          </div>
+          <p>21/01/2025</p>
+          <div class="servicio">
+            <img src="../imagenes/electricista.jpg" alt="">
+            <div class="servicio-info">
+              <strong>ELECTRICISTA</strong>
+              Solicitud del servicio<br>
+              <span class="estado completado">Servicio Completado</span>
+            </div>
+          </div>
+        </div>
+      `;
+    } else {
+      contenedor.innerHTML = `
+        <div class="entrada">
+          <p>Hoy, 24/02/2025</p>
+          <div class="servicio">
+            <img src="../imagenes/electricista.jpg" alt="">
+            <div class="servicio-info">
+              <strong>ELECTRICISTA</strong>
+              Servicio solicitado<br>
+              <span class="estado pendiente">Servicio Pendiente</span>
+            </div>
+          </div>
+          <p>02/02/2025</p>
+          <div class="servicio">
+            <img src="../imagenes/jardineria.jpg" alt="">
+            <div class="servicio-info">
+              <strong>JARDINERÍA</strong>
+              Servicio solicitado<br>
+              <span class="estado realizado">Servicio Realizado</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
