@@ -1,24 +1,39 @@
-function guardarProveedor(event) {
-    event.preventDefault();
-    const proveedor = {
-      email: document.getElementById("email").value,
-      password: document.getElementById("password").value,
-      nombre: document.getElementById("nombre").value,
-      cc: document.getElementById("cc").value,
-      ciudad: document.getElementById("ciudad").value,
-      celular: document.getElementById("celular").value,
-    };
-  
-   
-    localStorage.setItem("proveedorRegistrado", JSON.stringify(proveedor));
-  
-  const mensaje = document.getElementById("mensaje-exito");
-  mensaje.textContent = "¡Registrado exitosamente!";
+import { auth, db } from "./firebase-config.js";
+import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-  document.querySelector("form").reset();
+const mensaje = document.getElementById("mensaje-exito");
 
-  setTimeout(() => {
-    window.location.href = "informacion_proveedor.html";
-  }, 2000);
-  
+window.guardarProveedor = async function (event) {
+  event.preventDefault();
+
+  const nombre = document.getElementById("nombre").value;
+  const cc = document.getElementById("cc").value;
+  const ciudad = document.getElementById("ciudad").value;
+  const email = document.getElementById("email").value;
+  const celular = document.getElementById("celular").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const uid = userCredential.user.uid;
+
+    await setDoc(doc(db, "proveedores", uid), {
+      nombre,
+      cc,
+      ciudad,
+      email,
+      celular
+    });
+
+    mensaje.textContent = "¡Proveedor registrado exitosamente!";
+    document.querySelector("form").reset();
+
+    setTimeout(() => {
+      window.location.href = "singin.html";
+    }, 2000);
+  } catch (error) {
+    console.error("Error en el registro:", error);
+    mensaje.textContent = "Error: " + error.message;
   }
+};

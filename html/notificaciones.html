@@ -206,15 +206,16 @@
     <div class="notifications">
       <div class="notification">
         <div class="notification-icon">
-          <span>🔒</span>
+          
           <span>TIENES UN SERVICIO PROGRAMADO PARA MAÑANA, ¡NO LO OLVIDES!</span>
         </div>
         <div class="status-dot unread"></div>
       </div>
+     
 
       <div class="notification" onclick="mostrarDetalle()">
-        <div class="notification-icon">
-          <span>🔒</span>
+        <div class="notification-icon" style="color: #4be04b;">
+          
           <span>SOLICITUD ACEPTADA DE PEDRO. SERVICIO: FONTANERÍA</span>
         </div>
         <div class="status-dot unread"></div>
@@ -222,7 +223,7 @@
 
       <div class="notification read">
         <div class="notification-icon">
-          <span>🔒</span>
+          
           <span>NO OLVIDES CALIFICAR EL SERVICIO DE PEDRO</span>
         </div>
         <div class="status-dot read"></div>
@@ -230,7 +231,7 @@
 
       <div class="notification read">
         <div class="notification-icon">
-          <span>🔒</span>
+          
           <span>TU SERVICIO FUE FINALIZADO</span>
         </div>
         <div class="status-dot read"></div>
@@ -238,7 +239,7 @@
 
       <div class="notification read">
         <div class="notification-icon">
-          <span>🔒</span>
+         
           <span>PEDRO ESTÁ EN TU DIRECCIÓN</span>
         </div>
         <div class="status-dot read"></div>
@@ -258,6 +259,16 @@
       <button class="agendar-btn" onclick="agendarServicio()">Agendar servicio</button>
     </div>
   </div>
+  <div class="detalle-servicio" id="modalAgendar">
+  <div class="modal" style="background-color: #555;">
+    <p style="text-transform: lowercase; color: white; font-weight: bold; text-align: center;">
+      se procederá a iniciar el proceso de negociación con el proveedor por medio de un chat privado
+    </p>
+    <button class="agendar-btn" onclick="aceptarAgendar()">Aceptar</button>
+    <button class="perfil-btn" onclick="cancelarAgendar()">Cancelar</button>
+  </div>
+</div>
+
 
   <script>
     function mostrarDetalle() {
@@ -279,8 +290,18 @@
     }
 
     function agendarServicio() {
-      window.location.href = "chat.html";
+      cerrarDetalle(); // Oculta el modal anterior
+      document.getElementById("modalAgendar").style.display = "flex"; // Muestra nuevo mensaje
     }
+    function aceptarAgendar() {
+    window.location.href = "chat.html?origen=usuario";
+    }  
+    function cancelarAgendar() {
+      window.location.href = "notificaciones.html";
+    }
+
+
+
   </script>
 </body>
 </html>
