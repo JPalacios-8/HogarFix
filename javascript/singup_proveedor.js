@@ -30,7 +30,7 @@ window.guardarProveedor = async function (event) {
     document.querySelector("form").reset();
 
     setTimeout(() => {
-      window.location.href = "singin.html";
+      window.location.href = "informacion_proveedor.html";
     }, 2000);
   } catch (error) {
     console.error("Error en el registro:", error);

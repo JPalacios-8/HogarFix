@@ -7,9 +7,12 @@
   <style>
     body {
       margin: 0;
+      padding: 0;
       font-family: sans-serif;
       background-color: #444;
       color: white;
+      height: 100vh;
+       overflow: hidden;
     }
 
     header {
@@ -38,6 +41,7 @@
 
     .logo img {
       height: 40px;
+      margin-left: 250px;
     }
 
     .contenedor {
@@ -115,7 +119,7 @@
 
     footer {
       text-align: center;
-      margin-top: 30px;
+      margin-top: 5px;
       padding-bottom: 10px;
       color: #f2c94c;
       font-weight: bold;
@@ -174,9 +178,10 @@
     </div>
 
     <div class="botones">
-      <button onclick="window.location.href='miperfil.html'">MI PERFIL</button>
+      <button onclick="window.location.href='perfil-proveedores.html'">MI PERFIL</button>
       <button onclick="window.location.href='historialdeservicios.html?origen=proveedor'">HISTORIAL DE SERVICIOS</button>
-      <button onclick="window.location.href='soporte.html'">SOPORTE</button>
+      <button onclick="irASoporteDesdeProveedor()">SOPORTE</button>
+      <button onclick="window.location.href='singin.html'">CERRAR SESIÓN</button>
     </div>
   </div>
 
@@ -237,6 +242,11 @@
 
   function iniciarChatProveedor() {
     window.location.href = "chat.html?origen=proveedor";
+  }
+
+   function irASoporteDesdeProveedor() {
+    localStorage.setItem("origenSoporte", "proveedor");
+    window.location.href = "soporte.html";
   }
 </script>
 

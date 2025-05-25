@@ -79,12 +79,22 @@
       <img src="https://cdn-icons-png.flaticon.com/512/724/724933.png" alt="Descargar" width="30">
     </div>
 
-    <button class="btn" onclick="window.location.href='home.html'">VOLVER AL COMERCIO</button>
+    <button class="btn" onclick="volverAlComercio()">VOLVER AL COMERCIO</button>
   </div>
 
   <footer>HOGARFIX</footer>
 
   <script>
+    function volverAlComercio() {
+    const params = new URLSearchParams(window.location.search);
+    const origen = params.get('origen');
+
+    if (origen === "proveedor") {
+      window.location.href = "home-proveedor.html";
+    } else {
+      window.location.href = "home.html";
+    }
+  }
     // Simular datos del formulario guardados en localStorage
     const datos = JSON.parse(localStorage.getItem("datosServicio")) || {};
 
